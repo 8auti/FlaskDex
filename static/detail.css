@@ -1,0 +1,208 @@
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.pokemon-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.pokemon-title h1 {
+    font-size: 3rem;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.pokemon-id {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+.detail-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    gap: 3rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Columna izquierda */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon-image-container {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.pokemon-image-container img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+}
+
+.pokemon-types {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.type-badge {
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+/* Colores de tipos */
+.type-grass { background-color: #78C850; color: white; }
+.type-poison { background-color: #A040A0; color: white; }
+.type-fire { background-color: #F08030; color: white; }
+.type-water { background-color: #6890F0; color: white; }
+.type-electric { background-color: #F8D030; color: black; }
+.type-normal { background-color: #A8A878; color: white; }
+.type-fighting { background-color: #C03028; color: white; }
+.type-flying { background-color: #A890F0; color: white; }
+.type-ground { background-color: #E0C068; color: white; }
+.type-rock { background-color: #B8A038; color: white; }
+.type-bug { background-color: #A8B820; color: white; }
+.type-ghost { background-color: #705898; color: white; }
+.type-steel { background-color: #B8B8D0; color: white; }
+.type-psychic { background-color: #F85888; color: white; }
+.type-ice { background-color: #98D8D8; color: white; }
+.type-dragon { background-color: #7038F8; color: white; }
+.type-dark { background-color: #705848; color: white; }
+.type-fairy { background-color: #EE99AC; color: white; }
+
+/* Columna central */
+.middle-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.ability-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ability-list li {
+    padding: 0.5rem 0;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+}
+
+.info-section p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Columna derecha - Stats */
+.right-column h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 50px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-name {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.stat-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    background: linear-gradient(90deg, #a040a0, #ff4081);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.stat-value {
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Sección de movimientos */
+.moves-section {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.moves-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.moves-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+}
+
+.move-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.move-badge:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .detail-card {
+        grid-template-columns: 1fr;
+    }
+}

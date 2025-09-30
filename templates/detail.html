@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detalle de {{ pokemon.name | capitalize }} - PokéDex</title>
+
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/detail.css">
+</head>
+<body>
+    {% include 'components/header.html' %}
+
+    <div class="container">
+        <!-- Título con nombre y número -->
+        <div class="pokemon-title">
+            <h1>{{ pokemon.name | capitalize }}</h1>
+            <span class="pokemon-id">#{{ '%04d' % pokemon.id }}</span>
+        </div>
+
+        <!-- Contenedor principal -->
+        <div class="detail-card">
+            <!-- Columna izquierda: Imagen y tipos -->
+            <div class="left-column">
+                <div class="pokemon-image-container">
+                    <img src="{{ pokemon.sprites.other['home'].front_default }}" 
+                         alt="Imagen de {{ pokemon.name }}">
+                </div>
+                
+                <div class="pokemon-types">
+                    {% for t in pokemon.types %}
+                        <span class="type-badge type-{{ t.type.name | lower }}">
+                            {{ t.type.name | capitalize }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <audio controls src="{{ pokemon.cries.latest }}" style="width: 100%; margin-top: 1rem;"></audio>
+            </div>
+
+            <!-- Columna central: Habilidades y Dimensiones -->
+            <div class="middle-column">
+                <div class="info-section">
+                    <h2>Abilities</h2>
+                    <ul class="ability-list">
+                        {% for habilidad in pokemon.abilities %}
+                            <li>{{ habilidad.ability.name | replace('-', ' ') | capitalize }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h2>Dimensiones</h2>
+                    <p><strong>Altura:</strong> {{ pokemon.height / 10 }} m</p>
+                    <p><strong>Peso:</strong> {{ pokemon.weight / 10 }} kg</p>
+                </div>
+            </div>
+
+            <!-- Columna derecha: Base Stats -->
+            <div class="right-column">
+                <h2>Base Stats</h2>
+                <div class="stats-container">
+                    {% for stat in pokemon.stats %}
+                        <div class="stat-row">
+                            <span class="stat-name">{{ stat.stat.name | replace('special-attack', 'SpAtk') | replace('special-defense', 'SpDef') | replace('-', ' ') | capitalize }}</span>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: {{ (stat.base_stat / 255) * 100 }}%"></div>
+                            </div>
+                            <span class="stat-value">{{ stat.base_stat }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Movimientos -->
+        <div class="moves-section">
+            <h2>Movimientos</h2>
+            <div class="moves-grid">
+                {% for move in pokemon.moves[:20] %}
+                    <span class="move-badge">{{ move.move.name | replace('-', ' ') | capitalize }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'components/footer.html' %}
+</body>
+</html>

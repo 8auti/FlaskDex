@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlaskDex - A Flask-powered Pokédex</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/gengar.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% include 'components/header.html' %}
+
+    <main>
+        <div class="container">
+            <h1>Explora el Mundo Pokémon</h1>
+            <div id="loading" class="loading" style="display: none;">Cargando Pokémon...</div>
+            <div id="pokemonGrid" class="pokemon-grid"></div>
+        </div>
+
+        <div>
+            {% if lista_pokemon %}
+                <div class="api-message success">
+                    <p>✅ ¡API cargada correctamente! Puedes explorar todos los Pokémon disponibles.</p>
+                </div>
+            {% else %}
+                <div class="api-message error">
+                    <p>❌ No se pudo cargar la API. Intenta refrescar la página.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div>
+            <div class="pokemon-grid">
+                {% for pokemon in lista_pokemon %}
+                    {% include 'components/card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <button id="loadMoreBtn" class="load-more" onclick="loadMorePokemon()">Cargar Más Pokémon</button>
+
+    </main>
+
+    {% include 'components/footer.html' %}
+
+    <script>
+        function searchPokemon() {
+            // Aquí se puede agregar la lógica para la búsqueda de un Pokémon
+            alert('Funcionalidad de búsqueda aún no implementada.');
+        }
+
+        function loadMorePokemon() {
+            // Aquí se puede agregar la lógica para cargar más Pokémon
+            alert('Cargar más Pokémon aún no implementado.');
+        }
+    </script>
+</body>
+</html>

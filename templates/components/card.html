@@ -1,0 +1,73 @@
+<style>
+    .pokemon-card {
+        background-color: rgba(255, 255, 255, 0.01);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease, background 0.3s ease;
+        backdrop-filter: blur(4px);
+        text-align: center;
+    }
+
+    .pokemon-card:hover {
+        transform: scale(1.05);
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .pokemon-card img {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1rem;
+    }
+
+    .pokemon-number {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pokemon-card a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-transform: capitalize;
+    }
+
+    .pokemon-types {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .pokemon-types li {
+        display: flex;
+        align-items: center;
+    }
+
+    .pokemon-types img {
+        height: 32px;
+        width: auto;
+        margin: 0;
+    }
+</style>
+
+<div class="pokemon-card">
+    <img src="{{ pokemon.sprites.other['home'].front_default }}" alt="{{ pokemon.name }}">
+    <div class="pokemon-number">#{{ '%03d' % pokemon.id }}</div>
+    <a href="{{ url_for('pokemon', nombre=pokemon['name']) }}">{{ pokemon['name'] }}</a>
+    <ul class="pokemon-types">
+        {% for t in pokemon.types %}
+            <li>
+                <img src="{{ url_for('static', filename='img/types/' ~ (t.type.name | lower) ~ '.png') }}" 
+                    alt="{{ t.type.name }}" 
+                    title="{{ t.type.name }}">
+            </li>
+        {% endfor %}
+    </ul>
+</div>
