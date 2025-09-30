@@ -1,8 +1,13 @@
-# FlaskDex 🔴⚪
+# FlaskDex
 
 ![FlaskDex Banner](static/img/gengar.png)
 
 Una moderna Pokédex web construida con Flask y PokéAPI. Busca todos los Pokémon con información detallada, estadísticas, habilidades y más.
+
+
+  [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/)
+  [![Flask](https://img.shields.io/badge/Flask-2.x-green.svg)](https://flask.palletsprojects.com/)
+
 
 ## Características
 
@@ -88,7 +93,7 @@ http://127.0.0.1:5000
 ## Screenshots
 
 ### Página Principal
-![Home Page](screenshots/home.png)
+![Home Page](static/img/screenshots/home.png)
 
 ### Detalle de Pokémon
-![Detail Page](screenshots/detail.png)
+![Detail Page](static/img/screenshots/detail.png)
